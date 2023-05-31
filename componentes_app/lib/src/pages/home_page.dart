@@ -18,23 +18,12 @@ class HomePage extends StatelessWidget {
       future: menuProvider.cargarData(),
       //Argumento opcional, y será la información que tendrá por defecto mientras
       //no se haya resuelto la promesa
-      // initialData: [],
+      initialData: const [],
       builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
-        print('builder');
-        print(snapshot.data);
         //Crearemos el ListView
-         // Check if snapshot.data is not null before using it.
-        if (snapshot.hasData) {
-          return ListView(
-            children: _listaItems(snapshot.data!, context),
-          );
-        } else if (snapshot.hasError) {
-          // If there is an error, return an error widget.
-          return Text('Error: ${snapshot.error}');
-        } else {
-          // If the Future is still loading, return a loading spinner.
-          return const CircularProgressIndicator();
-        }
+        return ListView(
+          children: _listaItems(snapshot.data!, context),
+        );
       },
     );
   }

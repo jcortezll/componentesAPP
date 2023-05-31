@@ -13,6 +13,9 @@ class CardPage extends StatelessWidget {
           _cardTipo1(),
           const SizedBox(),
           _cardTipo2(),
+          _cardTipo1(),
+          const SizedBox(),
+          _cardTipo2(),
         ],
       ),
     );
@@ -20,6 +23,8 @@ class CardPage extends StatelessWidget {
 
   Widget _cardTipo1() {
     return Card(
+      elevation: 10,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Column(
         children: <Widget>[
           const ListTile(
@@ -42,7 +47,7 @@ class CardPage extends StatelessWidget {
 }
 
 Widget _cardTipo2() {
-  return Card(
+  final card = Card(
     child: Column(
       children: [
         const FadeInImage(
@@ -58,6 +63,22 @@ Widget _cardTipo2() {
           child: const Text('Esta es la prueba de que funciona la imagen'),
         )
       ],
+    ),
+  );
+  return Container(
+    decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: const <BoxShadow>[
+          BoxShadow(
+              color: Colors.black26,
+              blurRadius: 10,
+              spreadRadius: 2,
+              offset: Offset(2, 10))
+        ]),
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(30),
+      child: card,
     ),
   );
 }
